@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assign.css' %}">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Add Course</title>
+</head>
+<body>
+    <div class="abc">
+    <form action="/some/add_course_save" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label>Course Id</label>
+            <input type="text" class="form-control" name="course_id" value="{{cid}}"  placeholder="courseid">
+        </div>
+        <div class="form-group">
+            <label>Course name</label>
+            <input type="text" class="form-control" name="Name" placeholder="course name">
+        </div>
+        <div class="form-group">
+            <label>Department</label>
+            <input type="text" class="form-control" name="dept" placeholder="Department name">
+        </div> 
+        <div class="form-group">
+            {% if messages %}
+              {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% if message.tags == 'success' %}
+              <div class="alert alert-success alert-dismissible show" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary" style="background-color: rgb(229, 240, 240); color: black;">Add Course</button>       <button type="button" class="btn btn-primary" onclick="location.href='manage_course';" id="manage" >Manage Course</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

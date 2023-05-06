@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assign.css' %}"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Add Class</title>
+</head>
+<body>
+    <div class="abc">
+    <form action="/some/add_class_save" method="post">
+    {% csrf_token %}
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add Class</h3>
+        </div>
+        <div class="form-group">
+            <label>Class Id</label>
+            <input type="text" class="form-control" name="class_id" value="{{clss}}" placeholder="class id">
+        </div>
+        <div class="form-group">
+            <label>Class name</label>
+            <input type="text" class="form-control" name="name" placeholder="class name">
+        </div>
+        <div class="form-group">
+            <label>Course</label>
+                <select class="form-control" name="course">
+                    {% for course in course %}
+                        <option value="{{ course.course_id }}">{{ course.Name}}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary" style="background-color: rgb(229, 240, 240); color: black;">Add Class</button>  <button type="button" class="btn btn-primary" onclick="location.href='manage_class';" id="manage" style="background-color: rgb(229, 240, 240); color: black;">Manage Class</button>
+        </div>
+        <div class="form-group">
+            {% if messages %}
+              {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% if message.tags == 'success' %}
+              <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+    </form>
+    </div>
+</body>
+</html>

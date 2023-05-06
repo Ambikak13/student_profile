@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>LOGIN</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Login.css' %}">
+</head>
+<body>
+    <div class="abc">
+        {% if message %}
+        {% for message in messages %}
+        <div class="alert" role="alert" >
+           {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    <form action="/some/signin/" method="post">
+    {% csrf_token %}
+    <div class="card card-primary">
+        <div class="card-header">
+            <h1 class="card-title">LOGIN</h1>
+        </div>
+        <div class="form-group">
+            <label>User name</label>
+            <input type="email" class="form-control" name="email" style="height: 50px; width:300px"  placeholder="Please enter username..." required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" style="height: 50px; width:300px" placeholder="Please enter password.." required>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Login</button><br><br>
+        </div>
+        <div>
+            {% if messages %}
+            <div class="aa">
+            {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <span class="alert alert-danger">{{ message }}</span>
+            {% endif %}
+            {% endfor %}
+            </div>
+            {% endif %}
+            </div>
+        <div class="a">
+        <a href="/some/add_parent/" style="color: black;">Are you Parent? Register here...</a>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

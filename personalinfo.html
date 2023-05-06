@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>personal info</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assign.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="abc">
+    <form action="pinfo/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title"><b>Personal information</b></h3>
+            </div>
+            <tr>
+            <td width="300px">
+                <label for="rno">Roll Number:</label>
+            </td>
+            <td>
+                <input type="text" id="rno" name="rno" value="{{st.rno}}"  style="height: 30px; width:300px" readonly>
+            </td>
+            </tr><br>
+            <tr>
+            <td width="300px">
+                <label for="profile">Profile Pc:</label>
+            </td>
+            <td>
+                <input type="file" name="profile" required>
+            </td>
+            </tr>
+        <tr>
+            <td width="300px">
+                <label for="dob">Date of Birth:</label>
+            </td>
+            <td>
+                <input type="date" id="dob" name="dob"  style="height: 30px; width:300px" required>
+            </td>
+        </tr>
+        <tr>
+            <td width="300px">
+                <label for="fname">Father Name:</label>
+            </td>
+            <td>
+                <input type="text" id="fname" name="fname"  style="height: 30px; width:300px" required>
+            </td>
+        </tr>
+        <tr>
+            <td width="300px">
+                <label for="mname">Mother Name:</label>
+            </td>
+            <td>
+                <input type="text" id="mname" name="mname"  style="height: 30px; width:300px" required>
+            </td>
+        </tr>
+        <tr>
+            <td width="300px">
+                <label for="cno">Contact No:</label>
+            </td>
+            <td>
+                <input type="number" id="cno" name="cno"  style="height: 30px; width:300px" required>
+            </td>
+        </tr>
+        
+        <tr>
+            <td width="300px">
+                <label for="addr">Address:</label>
+            </td>
+            <td>
+                <input type="text" id="addr" name="addr"  style="height: 30px; width:300px" required>
+            </td>
+        </tr>
+        <tr>
+            <td width="300px">
+                <label for="dob">Achievements:</label>
+            </td>
+            <td>
+                <input type="text" name="achievements"  style="height: 30px; width:300px" required>
+            </td>
+        </tr>
+        <tr>          
+        <td colspan="2" width="300px">
+            <button type="submit" class="btn btn-primary btn-block" id="fetch_parent" style="height: 30px; width:200px">submit</button>
+        </td>
+        <tr>
+        </table>
+        <div class="form-group">
+            {% if messages %}
+              {% for message in messages %}
+              {% if message.tags == 'error' %}
+              <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% if message.tags == 'success' %}
+              <div class="alert alert-success alert-dismissible show" style="margin-top:10px">{{ message }}</div>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+        </div>
+        
+    </form>
+    <a href="/some/signin">Back</a>
+    
+</div>
+</body>
+</html>

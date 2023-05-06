@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assigns.css' %}">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Scholarship</title>
+</head>
+<body>
+    <div class="abc">
+    <form action="scholarship_save" method="post">
+        {% csrf_token %}
+    <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Scholarship</h3>
+            </div>
+        <div class="form-group">
+            <label>Select Catergory</label>
+            <select class="form-control" name="category" >
+                <option value="First Internal" name="firstinternal" >First Internal</option>
+                <option value="Second Internal">Second Internal</option>
+                <option value="First Sem">First Sem</option>
+                <option value="Second Sem">Second Sem</option>
+                <option value="Third Sem">Third Sem</option>
+                <option value="Fourth Sem">Fourth Sem</option>
+                <option value="Fifth Sem">Fifth Sem</option>
+                <option value="Sixth Sem">Sixth Sem</option>
+            </select>
+        </div>
+        <div class="card-footer">
+            <input type="submit" name="See students" value="submit" class="btn btn-primary">
+        </div>
+    </div>
+    </form>
+</div>
+</body>
+</html>

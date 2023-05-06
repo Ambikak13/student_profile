@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Midday Meal</title>
+</head>
+
+{% load static %}
+<body>
+</body>
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Apply For Mid-day Meal</h3>
+                </div>
+                <!-- /.card-header -->
+
+                        
+                <form method="POST" action="/some/midday_meal/midday_meal_save/">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- <div class="form-group">
+                            <label>RollNo</label>
+                                <input type="text"  name="rno"  class="form-control" required>
+                        </div> -->
+                        <div class="form-group">
+                            <label>Distance </label>
+                            <input type="text" name="distance" class="form-control" placeholder="Enter distance in km"/>
+                        </div>
+                        <div class="form-group">
+                            <label> Income Status of Parents </label>
+                            <input type="text" name="income_status" class="form-control" />
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Apply for Mid-day Meal</button>
+                    </div>
+                    <div class="form-group">
+                        {% if messages %}
+                          {% for message in messages %}
+                          {% if message.tags == 'error' %}
+                          <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                          {% endif %}
+                          {% if message.tags == 'success' %}
+                          <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                          {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                    </div>     
+                </form>
+
+                </div>
+                <!-- /.card -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Application History</h3>
+                            </div>
+        
+                            <div class="card-body">
+                               <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>Rollno</th>
+                                            <th>name</th>
+                                            <th>Application Date</th>
+                                            <th>Distance</th>
+                                            <th>Income Status</th>
+                                            <th>Application Status</th>
+                                        </tr>
+                                        </thead>
+                                        
+                                        {% for m in m_data %}
+                                        <tr>
+                                            <td>{{ m.rno }}</td>
+                                            <td>{{m.id.first_name}} {{m.id.last_name}}</td>
+                                            <td>{{ m.created_at }}</td>
+                                            <td>{{ m.distance }}</td>
+                                            <td>{{ m.income_status}}</td>
+                                            <td>
+                                                {% if m.appn_status == 1 %}
+                                                    <span class="alert alert-success">Approved</span>
+                                                {% elif m.appn_status == 2 %}
+                                                    <span class="alert alert-danger">Rejected</span>
+                                                {% else %}
+                                                    <span class="alert alert-warning">Pending</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        
+  </section>
+
+</html>

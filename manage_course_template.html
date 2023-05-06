@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Manage Student</title>
+</head>
+{% block page_title %}
+   <centre><h2> Manage Course</h2></centre>
+{% endblock page_title %}
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+
+            <a class="btn btn-primary" href="{% url 'add_course' %}" role="button">+ Add Course</a> <br/>&nbsp;
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Course Details</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Course Name</th>
+                                <th>Department</th>
+                                <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for c1 in course %}
+                                <tr>
+                                <th>{{ c1.course_id}}</th>
+                                <th>{{c1.Name}}</th>
+                                <th>{{c1.dept}}</th>
+                                <td>
+                                    <a href="{% url 'edit_course' c1.course_id %}" class="btn btn-success">Edit</a> 
+                                    <a href="{% url 'delete_course' c1.course_id %}" class="btn btn-danger">Delete</a> 
+                                </td>
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                            </table>
+                            <div class="form-group">
+                                {% if messages %}
+                                  {% for message in messages %}
+                                  {% if message.tags == 'error' %}
+                                  <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                                  {% endif %}
+                                  {% if message.tags == 'success' %}
+                                  <div class="alert alert-success alert-dismissible show" style="margin-top:10px">{{ message }}</div>
+                                  {% endif %}
+                                  {% endfor %}
+                                {% endif %}
+                              </div>
+                            
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>

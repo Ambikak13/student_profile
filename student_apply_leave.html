@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Leave Application</title>
+</head>
+{% load static %}
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Apply For Leave</h3>
+                </div>
+                        
+                <form method="POST" action="/some/student_apply_leave/student_apply_leave_save/">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- <div class="form-group">
+                            <label>RollNo</label>
+                                <input type="text" id="rno" name="rno"  class="form-control" required>
+                        </div> -->
+                        <div class="form-group">
+                            <label>Leave Date </label>
+                            <input type="date" name="leave_date" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Academic Advisor </label>
+                            <input type="text" class="form-control" name="academic_advisor" value="{{staffs.staff_name}}" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <label>Leave Reason </label>
+                            <textarea name="leave_reason" class="form-control" rows="6" placeholder="Leave Reason"></textarea>
+                        </div>
+
+
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Apply for Leave</button>
+                    </div>
+                    <div class="form-group">
+                        {% if messages %}
+                          {% for message in messages %}
+                          {% if message.tags == 'error' %}
+                          <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                          {% endif %}
+                          {% if message.tags == 'success' %}
+                          <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                          {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    <!-- <div class="card-footer">
+                        <button type="button" class="btn btn-primary" onclick="location.href='student_view_leave';" id="view" >View Leave</button>
+                        </div> -->
+                </form>
+
+                </div>
+                <!-- /.card -->
+
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Leave Apply History</h3>
+                    </div>
+
+                    <div class="card-body">
+                       <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <!-- <th>#ID</th> -->
+                                    <th>Rollno</th>
+                                    <th>Name</th>
+                                    <th>Leave Date</th>
+                                    <th>Leave Reason</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                
+                                {% for leave in leave_data %}
+                                <tr>
+                                    <!-- <td>{{ leave.leave_id }}</td> -->
+                                    <td>{{ leave.rno }}</td>
+                                    <td>{{leave.id.first_name}} {{leave.id.last_name}}</td>
+                                    <td>{{ leave.leave_date }}</td>
+                                    <td>{{ leave.leave_reason }}</td>
+                                    <td>
+                                        {% if leave.leave_status == 1 %}
+                                            <span class="alert alert-success">Approved</span>
+                                        {% elif leave.leave_status == 2 %}
+                                            <span class="alert alert-danger">Rejected</span>
+                                        {% else %}
+                                            <span class="alert alert-warning">Pending</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.container-fluid -->
+        
+  </section>
+
+</html>

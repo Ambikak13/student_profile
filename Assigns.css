@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color:bisque;
+    font-style: normal;
+    
+
+}
+
+body{
+    background:url("./Adding.jpg");
+    height: 500px;
+    width: 200px;
+    background-size: cover;
+}
+
+
+.abc{
+    width: 1000px;
+    padding: 100px;
+    position: relative;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: rgb(242, 245, 242);
+    top: 25%;
+    left: 160%;
+    /* transform: translate(25%,25%); */
+    background-color: rgba(243, 242, 247, 0.312); 
+    text-align: left;
+    
+}
+

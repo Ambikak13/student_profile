@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <section class="content">
+            <div class="container-fluid">
+    
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Students who have shortage...</h3>
+                            </div>
+                            <!-- /.card-header -->
+    
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>Rollno</th>
+                                        <th>Class</th>
+                                        <th>Class Held</th>
+                                        <th>Class Attended</th>
+                                        <th>Shortage Percentage</th>
+                                    </tr>
+                                    {% for x,y in d.items %}
+                                            <tr>
+                                                <th>{{x}}</th>
+                                                <th>{{sclass}} {{sec}}</th>
+                                                <th>{{class_held}}</th>
+                                                <th>{{class_attended}}</th>
+                                                <th>{{y}}%</th>
+                                            </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+</html>

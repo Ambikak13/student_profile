@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: rgb(27, 20, 11);
+    font-style: oblique;
+}
+
+body{
+    background:url("./pt7.jpg");
+    height: 500px;
+    width: 200px;
+    background-size: cover;
+    
+}
+
+.abc{
+    width: 240px;
+    padding: 70px;
+    height: 200px;
+    position: absolute;
+    border-style: outset;
+    border-color: rgb(113, 108, 113);
+    top: 40%;
+    left: 15%;
+    transform: translate(-50%,-50%);
+    background-color:rgba(36, 24, 24, 0.118);
+    text-align: center;
+
+}

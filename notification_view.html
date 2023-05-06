@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assigns.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>view notification</title>
+</head>
+{% block main_content %}
+
+{% load static %}
+<body>
+    <div class="abc">
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Notifications</h3>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Staff ID</th>
+                                    <th>Staff Name</th>
+                                    <!-- <th>Student Session</th> -->
+                                    <th>Message</th>
+                                    <th>Sended On</th>
+                                </tr>
+                                </thead>
+
+                                {% for notification in notification1 %}
+                                <tbody>
+                                <tr>
+                                    <td>{{ notification.id }}</td>
+                                    <td>{{ notification.staff_id }}</td>
+                                    <td>{{ notification.staff_name }}</td>
+                                    <td>{{ notification.messages }}</td>
+                                    <td>{{ notification.created_at }}</td>
+                                </tr>
+                                </tbody>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+{% endblock main_content %}
+</div>
+    </body>
+</html>

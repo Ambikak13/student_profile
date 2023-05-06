@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assigns.css' %}"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Student Mark</title>
+</head>
+<body>
+    <div class="abc">
+    <form method="post" action="/some/mark_report"> 
+        {% csrf_token %}
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Mark</h3>
+                </div>
+                <div class="form-group">
+                    <label>Select Subject</label>
+                       <select class="form-control" name="subject">
+                           {% for sub in subject %}
+                               <option value="{{ sub.subject_id }}">{{ sub.subject }}</option>
+                           {% endfor %}
+                       </select>
+               </div>
+               <div class="form-group">
+                <label>Select Category</label>
+                <select class="form-control" name="category" >
+                    <option value="First Internal">First Internal</option>
+                    <option value="Second Internal">Second Internal</option>
+                    <option value="First Sem">First Sem</option>
+                    <option value="Second Sem">Second Sem</option>
+                    <option value="Third Sem">Third Sem</option>
+                    <option value="Fourth Sem">Fourth Sem</option>
+                    <option value="Fifth Sem">Fifth Sem</option>
+                    <option value="Sixth Sem">Sixth Sem</option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Student</label>
+                       <select class="form-control" name="sts">
+                           {% for st in sts %}
+                               <option value="{{ st.rno }}">{{ st.rno }}</option>
+                           {% endfor %}
+                       </select>
+               </div>
+               <div class="form-group">
+                    <label>Enter Mark</label>
+                    <input type="number" name="mark" class="form-control" min="0" max="100" required>
+                </div>    
+                <div class="form-group">
+                    {% if messages %}
+                      {% for message in messages %}
+                      {% if message.tags == 'error' %}
+                      <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                      {% endif %}
+                      {% if message.tags == 'success' %}
+                      <div class="alert alert-success alert-dismissible show" style="margin-top:10px">{{ message }}</div>
+                      {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                <div class="card-footer">
+                <button type="submit" class="btn btn-success" name="save">Save Mark</a>
+                </div>
+            </div>
+            <!-- /.card -->
+    
+        </form>
+    </div>
+    </body>
+    </html>   

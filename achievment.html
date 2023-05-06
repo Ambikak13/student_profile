@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students Achievments</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/personalinfo.css' %}">
+</head>
+<body>
+    <div class="abc">
+        <h1>Students Achievments</h1><br><br>
+        <form action="sachievment/" method="post">
+            {% csrf_token %}
+            <label for="rno">Roll number</label>
+            <input type="text" id="rno" name="rno" placeholder="Please enter Rollnumber" style="height: 30px; width:200px" required><br><br>
+            <label for="achiev" >Achievements</label>
+            <input type="text"  id="achiev" name="achiev" placeholder="Enter students Achievments" style="height: 30px; width:200px" required><br><br>
+            <input type="submit" name="submit" id="submit" value="submit" style="height: 30px; width: 110px;"></button><br>
+            <a href="/some">Home</a>
+        </form>
+        <div class="content">
+            {% for msg in messages %} 
+            {{ msg }}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

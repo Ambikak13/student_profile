@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assigns.css' %}">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Scholarship</title>
+</head>
+<body>
+    <div class="abc">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Scholarship</h3>
+        </div>
+        <table class="table" name="marks">
+        <thead class="thead-light">
+        <tr>
+            <th>Rno</th>
+            <th>Total Marks</th>
+        </tr>
+        </thead>
+        {% for s in mks%}
+        <tr>
+        <td> {{ s.rno }} </td>
+        <td>{{ s.marks }}</td>
+
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>

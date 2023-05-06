@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assigns.css' %}">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Mid-day meals application</title>
+</head>
+<body>
+<div class="abc">
+<section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Mid-day Meals pplication</h3>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>Rollno</th>
+                                    <th>name</th>
+                                    <th>Class</th>
+                                    <th>Application Date</th>
+                                    <th>Distance</th>
+                                    <th>Income Status</th>
+                                    <th>Application Status</th>
+                                </tr>
+                                </thead>
+                                
+                                {% for m in meals %}
+                                <tr>
+                                    <td>{{ m.rno }}</td>
+                                    <td>{{m.id.first_name}} {{m.id.last_name}}</td>
+                                    <td>{{m.id.sclass}} '{{m.id.section}}'</td>
+                                    <td>{{ m.created_at }}</td>
+                                    <td>{{ m.distance }}Km</td>
+                                    <td>Rs.{{ m.income_status}}</td>
+                                    <td>
+                                        {% if m.appn_status == 0 %}
+                                            <a href="{% url 'midday_meal_approve' appn_id=m.appn_id %}" class="btn btn-success">Approve</a>
+                                            <a href="{% url 'midday_meal_reject' appn_id=m.appn_id %}" class="btn btn-danger">Reject</a>
+                                        {% elif m.appn_status == 1 %}
+                                            <button class="btn btn-warning" disabled="disabled">Approved</button>
+                                        {% else %}
+                                            <button class="btn btn-danger" disabled="disabled">Rejected</button>
+                                        {% endif %}
+                                        
+                                    </td>
+                                </tr>
+                                </tbody>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+    </div>
+    </body>
+</html> 
+      

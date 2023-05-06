@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assign.css' %}"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Add Academic advisor</title>
+</head>
+<body>
+    <div class="abc">
+    <form action="/some/add_aadvisor_save" method="post">
+    {% csrf_token %}
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add Academic advisor</h3>
+        </div>
+            <div class="form-group">
+                <label>Class</label>
+                <select class="form-control" name="cls">
+                    {% for cls in cls %}
+                        <option value="{{ cls.name }}">{{ cls.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Section</label>
+                <input type="text" name="sec" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Staff</label>
+                 <select class="form-control" name="staffs">
+                 {% for stff in staffs %}
+                     <option value="{{ stff.staff_id }}">{{ stff.staff_name}}</option>
+                 {% endfor %}
+                 </select>
+             </div>
+             <div class="form-group">
+                {% if messages %}
+                  {% for message in messages %}
+                  {% if message.tags == 'error' %}
+                  <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                  {% endif %}
+                  {% if message.tags == 'success' %}
+                  <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                  {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Add Academic advisor</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

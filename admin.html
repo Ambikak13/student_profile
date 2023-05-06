@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'S2/Students.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Admin Profile</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add
+                </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/some/add/">Student</a>
+                      <a class="dropdown-item" href="/some/add_staff/">Staff</a>
+                      <a class="dropdown-item" href="/some/add_course">Course</a>
+                      <a class="dropdown-item" href="/some/add_class">Class</a>
+                      <a class="dropdown-item" href="/some/add_subject">Subject</a>
+              </div>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/some/add_aadvisor">Assign Academic Advisor</a>
+            </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/some/scholarship">Scholarship</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/some/midday_meal_view/">Mid-day Meals</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/some">Logout</a><br>
+           </li>
+        </ul>
+    </div>
+  </div>
+  </nav>
+ <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/static/images/Admin1.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/static/images/Admin2.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/static/images/Admin3.jpg" alt="Third slide">
+    </div>
+    <!-- <div class="carousel-item">
+      <img class="d-block w-100" src="/static/images/Admin4.jpg" alt="Third slide">
+    </div> -->
+    <!-- <div class="carousel-item">
+      <img class="d-block w-100" src="/static/images/Admin5.jpg" alt="Third slide">
+    </div> -->
+  </div>
+</div>
+</body>
+</html>

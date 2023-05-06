@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'S2/Assigns.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Edit Subject</title>
+</head>
+{% load static %}
+
+<body>
+    <div class="abc">
+    <form action='edit_subject_save' method="post">
+        {% csrf_token %}
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Edit Subject</h3>
+            </div>
+            <div class="form-group">
+                <label for="rno">Subject ID</label>
+                <input type="text" class="form-control" name="subject_id" value="{{subject.subject_id}}" readonly required>
+            </div>
+            <div class="form-group"></div>
+                <label for="first">Subject Name:</label>
+                <input type="text" class="form-control" name="subject_name" value="{{subject.subject}}"  required>
+            </div>
+            <div class="form-group">
+                <label>Class</label> 
+                <select class="form-control" name="class_id" value="{{class1.name}}">
+                    {% for cls in class1 %}
+                        <option value="{{ cls.class_id}}">{{ cls.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Course</label> 
+                <select class="form-control" name="course_id">
+                    {% for course in course %}
+                        <option value="{{ course.course_id }}">{{ course.Name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Staff</label> 
+                <select class="form-control" name="staff_id">
+                    {% for staffs in staffs %}
+                        <option value="{{ staffs.staff_id }}">{{ staffs.staff_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="card-footer">
+                <input type="submit" class="btn btn-primary" name="Add Staff" value="submit" >             
+            </div>
+            <div class="form-group">
+                {% if messages %}
+                  {% for message in messages %}
+                  {% if message.tags == 'error' %}
+                  <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                  {% endif %}
+                  {% if message.tags == 'success' %}
+                  <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                  {% endif %}
+                  {% endfor %}
+                {% endif %}
+            </div>    
+                
+            </div>
+        </table>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

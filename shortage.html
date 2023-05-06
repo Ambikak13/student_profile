@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+</body>
+    <form action="/some/shortage/shortage_calc/" method="post">
+        {% csrf_token %}
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Shortage Calculation</h3>
+            </div>
+            <div class="form-group">
+                <label>Select Subject</label>
+                   <select class="form-control" name="subject">
+                       {% for sub in subject %}
+                           <option value="{{ sub.subject_id }}">{{ sub.subject }}</option>
+                       {% endfor %}
+                   </select>
+           </div>
+            <div class="form-group">
+                <label>Select Class</label>
+                   <select class="form-control" name="cls">
+                       {% for c in cls %}
+                           <option value="{{ c.name }}">{{ c.name }}</option>
+                       {% endfor %}
+                   </select>
+           </div>
+           <div class="form-group">
+                <label>Section</label>
+                 <input type="text" name="sec" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Select date for Shortage Calculation</label><br>
+                    <label>From</label>
+                        <input type="date" name="date1" class="form-control">
+                    <label>To</label>
+                        <input type="date" name="date2" class="form-control">
+            </div>
+           
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Calculate Shortage</button>
+            </div>
+            <div>
+                {% if msg %}
+                    {% for msg in messages %}
+                    <div class="alert" style="margin-top:10px">{{ msg }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</html>

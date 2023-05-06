@@ -1,0 +1,35 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    color:black;
+    font-style: normal;
+    font-size: 18px;
+    
+}
+
+body{
+    background:url("./Login2.jpg");
+    height: 500px;
+    width: 200px;
+    background-size: cover;
+    
+}
+
+.abc{
+    width: 400px;
+    padding: 70px;
+    position: relative;
+    border-style: outset;
+    border-radius: 30px;
+    border-color: rgba(189, 192, 189, 0.434);
+    top: 15%;
+    left: 90%;
+    /* transform: translate(-50%,-50%);   */
+    background-color: transparent; 
+    text-align: left;
+}
+
+
+

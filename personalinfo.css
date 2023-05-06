@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: rgb(27, 20, 11);
+    font-style: oblique;
+    font-weight: bolder;
+
+}
+
+body{
+    background:url("./add4.jpg");
+    height: 500px;
+    width: 200px;
+    background-size: cover;
+
+}
+
+
+.abc{
+    width: 600px;
+    height: 500px;
+    padding: 50px;
+    position: static;
+    border-style: groove;
+    border-color: gray;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 25%);
+    background-color: rgba(245, 245, 245, 0.211);
+    text-align: center;
+    margin-left: 100px;
+}

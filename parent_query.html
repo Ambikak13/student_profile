@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Query</title>
+</head>
+{% block main_content %}
+
+{% load static %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+                    <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Leave a query Message</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+               <form action="{% url 'parent_query_save' %}" method="post">
+                <div class="card-body">
+
+                    {% csrf_token %}
+                  <div class="form-group">
+                      <label>Academic Advisor</label>
+                      <input type="text" class="form-control" name="academic_advisor" value="{{staffs.staff_name}}">
+                      
+                  </div>
+                  <div class="form-group">
+                    <label>Query Message</label>
+                    <textarea class="form-control" rows="6" name="query_msg"></textarea>
+                  </div>
+                   <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block" id="fetch_parent" style="height: 30px; width:200px">Leave a query Message</button>
+                </div>
+               </form>
+            </div>
+
+            <!-- /.card -->
+           <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Query History</h3>
+              </div>
+
+               <div class="table">
+               <table class="table">
+                   <tr>
+                       <th>ID</th>
+                       <th>Query Message</th>
+                       <th>Query Reply</th>
+                   </tr>
+                   {% for row in query_data %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.querys }}</td>
+                            <td>{{ row.query_reply }}</td>
+                        </tr>
+                   {% endfor %}
+               </table>
+               </div>
+            </div>
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+{% block custom_js %}
+
+{% endblock custom_js %}
+</html>

@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: rgb(27, 20, 11);
+    font-style: oblique;
+}
+
+body{
+    background:url("./s4.jpg");
+    height: 500px;
+    width: 200px;
+    background-size: cover;
+}
+
+.abc{
+    width: 250px;
+    padding: 55px;
+    position: absolute;
+    border-style: outset;
+    border-color: brown;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: hsla(25, 87%, 50%, 0.914);
+    text-align: center;
+}
